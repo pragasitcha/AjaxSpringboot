@@ -4,10 +4,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 <script>
 $(document).ready(function(){
-  $("button").click(function(){
+  $("#getMember").click(function(){
 
     var json = '{ "userID": "1"}'
-    var jsonString = JSON.stringify(json)
 
     $.ajax({
         type: "POST",
@@ -29,13 +28,34 @@ $(document).ready(function(){
         }
     });
   });
+  
+  $("#getConfig").click(function(){
+
+	    $.ajax({
+	        type: "GET",
+	        url: "/api/config",
+	        cache: false,
+	        timeout: 600000,
+	        success: function (data) {
+
+	            alert(data);
+
+	        },
+	        error: function (e) {
+
+	            alert(e);
+
+	        }
+	    });
+	  });
+  
 });
 </script>
 </head>
 <body>
 
-<button>Send an HTTP POST request to a page and get the result back</button>
-
+<button id = "getMember">Send an HTTP POST request to a page and get the result back</button>
+<button id = "getConfig">Send an HTTP POST request to a page and get Configurations </button>
 
 </body>
 </html>
